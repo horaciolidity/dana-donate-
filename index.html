@@ -14,7 +14,6 @@
   </header>
 
   <style>
-/* Estilos generales */
 * {
   margin: 0;
   padding: 0;
@@ -23,114 +22,65 @@
 }
 
 body {
-  background: linear-gradient(135deg, #c60b1e 0%, #2b3a67 100%);
+  background: linear-gradient(135deg, #F5CBA0, #2980B9); /* Gradiente que evoca la luz y el agua de Venecia */
   color: #333;
   line-height: 1.6;
   overflow-x: hidden;
 }
 
-/* Encabezado */
 .header {
-  background-color: #2b3a67;
+  background-color: #C0392B; /* Color oscuro que representa la seriedad */
   color: #fff;
   padding: 3rem;
   text-align: center;
-  border-bottom: 4px solid #1e2955;
+  border-bottom: 5px solid #2980B9;
 }
 
-.header h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-}
-
-.header p {
-  font-size: 1.2rem;
-}
-
-/* Sección de donaciones */
-.donation {
-  background-color: rgba(0, 0, 0, 0.8);
+h1, h2, h3 {
   color: #fff;
-  border-radius: 8px;
-  padding: 2rem;
-  margin-top: 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
 }
 
-.donation h2 {
-  font-size: 1.8rem;
+h1 {
+  font-size: 3rem;
   margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 2.2rem;
+  margin-bottom: 0.8rem;
+  border-bottom: 3px solid #F39C12; /* Color de acento que recuerda a los edificios venecianos */
+  display: inline-block;
+}
+
+section {
+  padding: 3rem;
+  margin: 2rem auto;
+  width: 90%;
+  max-width: 1000px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.donation, .contact, .join {
+  text-align: center;
 }
 
 .bitcoin-info {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   gap: 1.5rem;
 }
 
-.bitcoin-info img {
-  max-width: 180px;
-  border: 3px solid #c60b1e;
-  border-radius: 10px;
-}
-
-/* Centros asistenciales */
-.assistance-centers {
-  background-color: rgba(255, 255, 255, 0.1);
-  color: #fff;
+.bitcoin-address {
+  background-color: #eef2f5;
+  padding: 1rem;
   border-radius: 8px;
-  padding: 2rem;
-  margin: 2rem 0;
-}
-
-.assistance-centers h2 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-}
-
-.assistance-centers ul li {
-  font-size: 1.2rem;
-  padding: 0.5rem 0;
-}
-
-/* Únete al escuadrón de búsqueda */
-.search-team {
-  background-color: rgba(255, 255, 255, 0.1);
-  color: #fff;
-  border-radius: 8px;
-  padding: 2rem;
-  margin: 2rem 0;
-  text-align: center;
-}
-
-.search-team h2 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-}
-
-.search-team button {
-  background-color: #c60b1e;
-  color: #fff;
-  padding: 0.8rem 2rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: bold;
-}
-
-.search-team button:hover {
-  background-color: #a00014;
-}
-
-/* Galería de imágenes y videos */
-.media {
-  background-color: rgba(0, 0, 0, 0.8);
-  color: #fff;
-  border-radius: 8px;
-  padding: 2rem;
-  margin: 2rem 0;
-  text-align: center;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
 .gallery img, .gallery video {
@@ -138,84 +88,73 @@ body {
   max-width: 500px;
   margin: 1rem 0;
   border-radius: 10px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 5px 20px rgba(0,0,0,0.15);
 }
 
-/* Lista de personas desaparecidas */
-.missing-persons {
-  background-color: rgba(255, 255, 255, 0.1);
-  color: #fff;
-  border-radius: 8px;
-  padding: 2rem;
-  margin: 2rem 0;
-}
-
-.missing-persons h2 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-}
-
-.missing-persons ul li {
-  font-size: 1.2rem;
-  padding: 0.5rem 0;
-}
-
-/* Lista de personas encontradas */
-.found-persons {
-  background-color: rgba(255, 255, 255, 0.1);
-  color: #fff;
-  border-radius: 8px;
-  padding: 2rem;
-  margin: 2rem 0;
-}
-
-.found-persons h2 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-}
-
-.found-persons ul li {
-  font-size: 1.2rem;
-  padding: 0.5rem 0;
-}
-
-/* Sección de contacto */
-.contact {
-  background-color: rgba(255, 255, 255, 0.1);
-  color: #fff;
-  border-radius: 8px;
-  padding: 2rem;
-  margin: 2rem 0;
-}
-
-.contact h2 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
+ul {
+  list-style: none;
+  padding: 0;
 }
 
 .contact ul li {
-  font-size: 1.2rem;
-  padding: 0.5rem 0;
+  margin: 0.5rem 0;
 }
 
 .contact a {
-  color: #f8b400;
-  font-weight: bold;
+  color: #C0392B;
   text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
 }
 
 .contact a:hover {
-  color: #fff;
+  color: #2980B9; /* Color azul claro al pasar el mouse */
 }
 
-/* Pie de página */
 footer {
-  background-color: #1e2955;
-  color: #fff;
   padding: 1rem;
   text-align: center;
   font-size: 0.9rem;
+  background: #C0392B; /* Color oscuro del footer */
+  color: #fff;
+  letter-spacing: 1px;
 }
+
+.join {
+  background: #f9e79f; /* Color claro para el formulario */
+  border-radius: 12px;
+  padding: 2rem;
+}
+
+.join form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.join input {
+  padding: 10px;
+  margin: 10px 0;
+  width: 80%;
+  max-width: 400px;
+  border: 1px solid #2980B9;
+  border-radius: 5px;
+}
+
+.join button {
+  padding: 10px 20px;
+  background-color: #C0392B; /* Botón rojo oscuro */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.join button:hover {
+  background-color: #E74C3C; /* Color al pasar el mouse */
+}
+
 
   </style>
 
