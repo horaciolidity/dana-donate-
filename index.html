@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ayuda a las Personas Afectadas por la DANA en Venecia</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <h1>Ayuda a las Personas Afectadas por la DANA en Venecia</h1>
+    <p>Haz tu donación en Bitcoin para apoyar a las personas sin hogar y ayudar a los centros de refugio.</p>
+  </header>
+  <style>
+    /* styles.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #f4f4f4;
+  color: #333;
+  line-height: 1.6;
+}
+
+.header {
+  background: #003366;
+  color: #fff;
+  padding: 2rem;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 2.5rem;
+}
+
+section {
+  padding: 2rem;
+  margin: 1rem auto;
+  width: 90%;
+  max-width: 800px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.donation, .contact {
+  text-align: center;
+}
+
+.bitcoin-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.bitcoin-address span {
+  font-weight: bold;
+}
+
+.gallery img, .gallery video {
+  width: 100%;
+  max-width: 400px;
+  margin: 1rem 0;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.contact a {
+  color: #003366;
+  text-decoration: none;
+}
+
+.contact a:hover {
+  text-decoration: underline;
+}
+
+  </style>
+
+  <!-- Donation Section -->
+  <section class="donation">
+    <h2>Donaciones en Bitcoin</h2>
+    <p>Escanea el código QR para donar o copia la dirección de Bitcoin</p>
+    <div class="bitcoin-info">
+      <img src="ruta_del_codigo_qr.png" alt="Código QR Bitcoin">
+      <p class="bitcoin-address">Dirección de Bitcoin: <span>tu_direccion_bitcoin</span></p>
+    </div>
+  </section>
+
+  <!-- Reports Section -->
+  <section class="reports">
+    <h2>Informes de la Situación y Rescates</h2>
+    <div class="report-content">
+      <p>Aquí puedes leer los informes sobre los rescates, el estado de los centros de refugio y las necesidades actuales.</p>
+      <!-- Aquí puedes agregar reportes dinámicamente usando JavaScript -->
+      <ul id="report-list"></ul>
+    </div>
+  </section>
+
+  <!-- Media Section -->
+  <section class="media">
+    <h2>Imágenes y Videos</h2>
+    <div class="gallery">
+      <!-- Espacio para imágenes -->
+      <img src="ruta_imagen1.jpg" alt="Imagen de rescate">
+      <img src="ruta_imagen2.jpg" alt="Centro de refugio">
+      <video controls src="ruta_video1.mp4"></video>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact">
+    <h2>Contacto</h2>
+    <p>Para mayor información o reportar personas desaparecidas:</p>
+    <ul>
+      <li>Correo electrónico: contacto@example.com</li>
+      <li>Teléfono: +39 123 456 789</li>
+      <li>Redes Sociales: <a href="#">Instagram</a> | <a href="#">Twitter</a> | <a href="#">Facebook</a></li>
+    </ul>
+  </section>
+
+  <script>
+
+document.addEventListener("DOMContentLoaded", function () {
+  const reportList = document.getElementById("report-list");
+  
+  const reports = [
+    { title: "Informe 1", content: "Descripción del informe de rescate en área X." },
+    { title: "Informe 2", content: "Actualización sobre el estado del centro de refugio Y." },
+    { title: "Informe 3", content: "Necesidades actuales para las familias afectadas." }
+  ];
+
+  reports.forEach(report => {
+    const listItem = document.createElement("li");
+    listItem.innerHTML = `<h3>${report.title}</h3><p>${report.content}</p>`;
+    reportList.appendChild(listItem);
+  });
+});
+
+
+    
+  </script>
+</body>
+</html>
