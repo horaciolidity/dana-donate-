@@ -9,9 +9,10 @@
 <body>
   <!-- Header -->
   <header class="header">
-    <h1>Ayuda a las Personas Afectadas por la DANA en Venecia</h1>
-    <p>Haz tu donación en Bitcoin para apoyar a las personas sin hogar y ayudar a los centros de refugio.</p>
+    <h1 data-key="title">Ayuda a las Personas Afectadas por la DANA en Venecia</h1>
+    <p data-key="description">Haz tu donación en Bitcoin para apoyar a las personas sin hogar y ayudar a los centros de refugio.</p>
   </header>
+
   <style>
 /* styles.css */
 * {
@@ -200,35 +201,31 @@ footer {
   60% { transform: scale(1.05); opacity: 0.8; }
   100% { transform: scale(1); opacity: 1; }
 }
-
-
   </style>
 
   <!-- Donation Section -->
   <section class="donation">
-    <h2>Donaciones en Bitcoin</h2>
-    <p>Escanea el código QR para donar o copia la dirección de Bitcoin</p>
+    <h2 data-key="donate">Donaciones en Bitcoin</h2>
+    <p data-key="donate_instructions">Escanea el código QR para donar o copia la dirección de Bitcoin</p>
     <div class="bitcoin-info">
       <img src="ruta_del_codigo_qr.png" alt="Código QR Bitcoin">
-      <p class="bitcoin-address">Dirección de Bitcoin: <span>tu_direccion_bitcoin</span></p>
+      <p class="bitcoin-address"><span data-key="bitcoin_address_label">Dirección de Bitcoin:</span> <span>tu_direccion_bitcoin</span></p>
     </div>
   </section>
 
   <!-- Reports Section -->
   <section class="reports">
-    <h2>Informes de la Situación y Rescates</h2>
+    <h2 data-key="reports_title">Informes de la Situación y Rescates</h2>
     <div class="report-content">
-      <p>Aquí puedes leer los informes sobre los rescates, el estado de los centros de refugio y las necesidades actuales.</p>
-      <!-- Aquí puedes agregar reportes dinámicamente usando JavaScript -->
+      <p data-key="reports_description">Aquí puedes leer los informes sobre los rescates, el estado de los centros de refugio y las necesidades actuales.</p>
       <ul id="report-list"></ul>
     </div>
   </section>
 
   <!-- Media Section -->
   <section class="media">
-    <h2>Imágenes y Videos</h2>
+    <h2 data-key="media_title">Imágenes y Videos</h2>
     <div class="gallery">
-      <!-- Espacio para imágenes -->
       <img src="ruta_imagen1.jpg" alt="Imagen de rescate">
       <img src="ruta_imagen2.jpg" alt="Centro de refugio">
       <video controls src="ruta_video1.mp4"></video>
@@ -237,35 +234,45 @@ footer {
 
   <!-- Contact Section -->
   <section class="contact">
-    <h2>Contacto</h2>
-    <p>Para mayor información o reportar personas desaparecidas:</p>
+    <h2 data-key="contact_us">Contacto</h2>
+    <p data-key="contact_details">Para mayor información o reportar personas desaparecidas:</p>
     <ul>
-      <li>Correo electrónico: contacto@example.com</li>
-      <li>Teléfono: +39 123 456 789</li>
-      <li>Redes Sociales: <a href="#">Instagram</a> | <a href="#">Twitter</a> | <a href="#">Facebook</a></li>
+      <li data-key="email">Correo electrónico: contacto@example.com</li>
+      <li data-key="phone">Teléfono: +39 123 456 789</li>
+      <li data-key="social">Redes Sociales: <a href="#">Instagram</a> | <a href="#">Twitter</a> | <a href="#">Facebook</a></li>
     </ul>
   </section>
 
   <script>
-
-document.addEventListener("DOMContentLoaded", function () {
-  const reportList = document.getElementById("report-list");
-  
-  const reports = [
-    { title: "Informe 1", content: "Descripción del informe de rescate en área X." },
-    { title: "Informe 2", content: "Actualización sobre el estado del centro de refugio Y." },
-    { title: "Informe 3", content: "Necesidades actuales para las familias afectadas." }
-  ];
-
-  reports.forEach(report => {
-    const listItem = document.createElement("li");
-    listItem.innerHTML = `<h3>${report.title}</h3><p>${report.content}</p>`;
-    reportList.appendChild(listItem);
-  });
-});
-
-
-    
+    const translations = {
+      en: {
+        title: "Help Venice: Bitcoin Donations",
+        description: "Make a Bitcoin donation to support the homeless and help our shelters.",
+        donate: "Bitcoin Donations",
+        donate_instructions: "Scan the QR code to donate or copy the Bitcoin address",
+        bitcoin_address_label: "Bitcoin Address:",
+        reports_title: "Reports on the Situation and Rescues",
+        reports_description: "Read reports on rescues, the status of shelters, and current needs.",
+        media_title: "Images and Videos",
+        contact_us: "Contact Us",
+        contact_details: "For more information or missing persons reports:",
+        email: "Email",
+        phone: "Phone",
+        social: "Social Media"
+      },
+    };
+    async function translatePage() {
+      const response = await fetch("https://ipapi.co/json/");
+      const data = await response.json();
+      const lang = data.country_code !== "ES" ? "en" : "es";
+      if (lang in translations) {
+        document.querySelectorAll("[data-key]").forEach(el => {
+          const key = el.getAttribute("data-key");
+          if (translations[lang][key]) el.innerText = translations[lang][key];
+        });
+      }
+    }
+    translatePage();
   </script>
 </body>
 </html>
