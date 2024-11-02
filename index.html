@@ -225,11 +225,7 @@
     <p>Envía tu ayuda en Bitcoin y apoya a los afectados por la DANA en Venecia.</p>
   </header>
 
-  <!-- Search Timer Section -->
-  <section class="search-timer">
-    <h2>Tiempo de Búsqueda</h2>
-    <div id="timer">32:00:00</div>
-  </section>
+
 
   <!-- Donation Section -->
   <section class="donation">
@@ -311,87 +307,84 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <script>
-   document.addEventListener("DOMContentLoaded", function () {
-    let totalSeconds = 0; // Inicia desde 0
 
+        document.addEventListener("DOMContentLoaded", function () {
+            let totalSeconds = 0; // Inicia desde 0
 
+            // Datos de ejemplo de transacciones
+            const transactionData = [
+                { address: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa", amount: 0.01, time: "2024-11-01T10:00:00Z" },
+                { address: "1BvBMSEYstWs9cN8JnV5m4s3fWcP2yVrD6", amount: 0.001, time: "2024-11-01T09:00:00Z" },
+                { address: "1C6svpsfdH8aj8gUQ6X71NNCi9F5N1Xw7v", amount: 0.5, time: "2024-11-01T08:30:00Z" },
+                { address: "1D7Cz1kbcGcqpQpt2zEKLZ8ayFq1Kvqzv1", amount: 0.02, time: "2024-11-01T07:15:00Z" },
+                { address: "1E3wnE3DFPa1cJ5KFd8vNh5Qg1dV6qZZvx", amount: 0.01, time: "2024-11-01T06:45:00Z" },
+                { address: "1F9zdA14GfN5kFQZ4Frnc5EdTyGx4a2MXL", amount: 1, time: "2024-10-31T20:00:00Z" },
+            ];
 
-  // Datos de ejemplo de transacciones
-        const transactionData = [
-            { address: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa", amount: 0.01, time: "2024-11-01T10:00:00Z" },
-            { address: "1BvBMSEYstWs9cN8JnV5m4s3fWcP2yVrD6", amount: 0.001, time: "2024-11-01T09:00:00Z" },
-            { address: "1C6svpsfdH8aj8gUQ6X71NNCi9F5N1Xw7v", amount: 0.5, time: "2024-11-01T08:30:00Z" },
-            { address: "1D7Cz1kbcGcqpQpt2zEKLZ8ayFq1Kvqzv1", amount: 0.02, time: "2024-11-01T07:15:00Z" },
-            { address: "1E3wnE3DFPa1cJ5KFd8vNh5Qg1dV6qZZvx", amount: 0.01, time: "2024-11-01T06:45:00Z" },
-            { address: "1F9zdA14GfN5kFQZ4Frnc5EdTyGx4a2MXL", amount: 1, time: "2024-10-31T20:00:00Z" },
-        ];
+            function updateTransactions() {
+                const tbody = document.getElementById("transaction-table-body");
+                tbody.innerHTML = ""; // Limpia las transacciones actuales
 
-        function updateTransactions() {
-            const tbody = document.getElementById("transaction-table-body");
-            tbody.innerHTML = ""; // Limpia las transacciones actuales
+                // Obtiene las 3 últimas transacciones
+                const latestTransactions = transactionData.slice(-3);
 
-            // Obtiene las 3 últimas transacciones
-            const latestTransactions = transactionData.slice(-3);
+                latestTransactions.forEach(transaction => {
+                    const row = document.createElement("tr");
+                    row.innerHTML = `
+                        <td>${transaction.address}</td>
+                        <td>${transaction.amount.toFixed(3)}</td>
+                        <td>${new Date(transaction.time).toLocaleString()}</td>
+                    `;
+                    tbody.appendChild(row);
+                });
+            }
 
-            latestTransactions.forEach(transaction => {
-                const row = document.createElement("tr");
-                row.innerHTML = `
-                    <td>${transaction.address}</td>
-                    <td>${transaction.amount.toFixed(3)}</td>
-                    <td>${new Date(transaction.time).toLocaleString()}</td>
-                `;
-                tbody.appendChild(row);
-            });
-        }
-
-        function drawChart() {
-            const ctx = document.getElementById('btcChart').getContext('2d');
-            const chart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['Total BTC'],
-                    datasets: [{
-                        label: '1.2 BTC',
-                        data: [1.2],
-                        backgroundColor: 'rgba(75, 192, 192, 0.6)',
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            ticks: {
-                                stepSize: 0.1
+            function drawChart() {
+                const ctx = document.getElementById('btcChart').getContext('2d');
+                const chart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Total BTC'],
+                        datasets: [{
+                            label: '1.2 BTC',
+                            data: [1.2],
+                            backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    stepSize: 0.1
+                                }
                             }
                         }
                     }
-                }
-            });
-        }
+                });
+            }
 
-        // Inicializa la sección
-        updateTransactions();
-        drawChart();
-     
+            function updateTimer() {
+                totalSeconds++; // Incrementa en cada segundo
 
-    function updateTimer() {
-        totalSeconds++; // Incrementa en cada segundo
+                const hours = Math.floor(totalSeconds / 3600);
+                const minutes = Math.floor((totalSeconds % 3600) / 60);
+                const seconds = totalSeconds % 60;
 
-        const hours = Math.floor(totalSeconds / 3600);
-        const minutes = Math.floor((totalSeconds % 3600) / 60);
-        const seconds = totalSeconds % 60;
+                document.getElementById("timer").textContent =
+                    String(hours).padStart(2, '0') + ":" +
+                    String(minutes).padStart(2, '0') + ":" +
+                    String(seconds).padStart(2, '0');
+            }
 
-        document.getElementById("timer").textContent =
-            String(hours).padStart(2, '0') + ":" +
-            String(minutes).padStart(2, '0') + ":" +
-            String(seconds).padStart(2, '0');
-    }
+            // Inicializa la sección
+            updateTransactions();
+            drawChart();
+            setInterval(updateTimer, 1000); // Actualiza el temporizador cada segundo
+        });
+    </script>
 
-    setInterval(updateTimer, 1000);
-});
-
-  </script>
 </body>
 </html>
