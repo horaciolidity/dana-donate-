@@ -6,7 +6,7 @@
   <title>Apoyo para Valencia: Ayuda Urgente a los Damnificados</title>
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* Aquí está el CSS modificado */
+    /* CSS básico */
     * {
       margin: 0;
       padding: 0;
@@ -36,18 +36,6 @@
       letter-spacing: 1.5px;
     }
 
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
-
-    h2 {
-      font-size: 2.2rem;
-      margin-bottom: 0.8rem;
-      border-bottom: 3px solid #FFD700;
-      display: inline-block;
-    }
-
     section {
       padding: 1rem 2rem 2rem;
       margin: 1.5rem auto;
@@ -58,143 +46,71 @@
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     }
 
-    .donation, .media {
-      padding: 1rem;
-      text-align: center;
-    }
-
-    .bitcoin-info img {
-      width: 120px;
-      max-width: 100%;
-      height: auto;
-      border: 3px solid #FFD700;
-      border-radius: 10px;
-      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-      margin: 1rem auto;
-    }
-
-    .bitcoin-address {
-      background-color: #eef2f5;
-      padding: 1rem;
+    /* Tabla de transacciones */
+    .transactions-table {
+      width: 100%;
+      margin: 1.5rem 0;
+      border-collapse: collapse;
+      background: #fff;
       border-radius: 8px;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
     }
 
-    .gallery {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1.5rem;
-    }
-
-    .gallery img, .gallery video {
-      width: 200px;
-      height: auto;
-      border-radius: 10px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-      opacity: 0;
-      transform: translateY(20px);
-      animation: showCard 0.5s forwards;
-    }
-
-    @keyframes showCard {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    footer {
-      padding: 1rem;
+    .transactions-table th, .transactions-table td {
+      padding: 10px;
+      border: 1px solid #ccc;
       text-align: center;
-      font-size: 0.9rem;
-      background: #004080;
+    }
+
+    .transactions-table th {
+      background-color: #004080;
       color: #fff;
-      letter-spacing: 1px;
+    }
+
+    /* Contenedor del gráfico */
+    #chart {
+      margin: 2rem 0;
     }
   </style>
 </head>
 <body>
-  <!-- Header -->
+  <!-- Encabezado -->
   <header class="header">
     <h1>¡Haz la Diferencia Ahora!</h1>
     <p>Envía tu ayuda en Bitcoin y apoya a los afectados por la DANA en Valencia.</p>
   </header>
 
-  <!-- Donation Section -->
-  <section class="donation">
+  <!-- Sección de donaciones y gráfica -->
+  <section class="donation-section">
     <h2>Haz Tu Aporte en Bitcoin</h2>
     <p>Escanea el código QR o copia la dirección para unirte a la causa y hacer la diferencia.</p>
     <div class="bitcoin-info">
-      <img src="https://dana-donate.vercel.app/qr.jfif" alt="Código QR para donación en Bitcoin">
+      <img src="https://dana-donate.vercel.app/qr.jfif" alt="Código QR para donación en Bitcoin" style="width: 120px;">
       <p class="bitcoin-address">Dirección Bitcoin: <span>bc1qt92rh6lp2dgv9tcl5e6cpukzfkt2n3pve28fjr</span></p>
-      <p class="bitcoin-address">Estás ayudando a cientos de personas.</p>
     </div>
-  </section>
+    
+    <!-- Tabla de transacciones -->
+    <h2>Últimas Donaciones Recibidas</h2>
+    <table class="transactions-table" id="transaction-table">
+      <thead>
+        <tr>
+          <th>Dirección del Depositante</th>
+          <th>Cantidad (BTC)</th>
+          <th>Hora de Transacción</th>
+        </tr>
+      </thead>
+      <tbody id="transaction-table-body">
+        <!-- Aquí se insertarán las transacciones -->
+      </tbody>
+    </table>
 
-  <!-- Assistance Centers Section -->
-  <section class="assistance-centers">
-    <h2>Centros Asistenciales en Valencia</h2>
-    <ul>
-      <li><strong>Centro de Refugio El Carmen:</strong> +34 123 456 789 | centro_el_carmen@outlook.com</li>
-      <li><strong>Centro de Apoyo Ruzafa:</strong> +34 987 654 321 | centro_ruzafa@outlook.com</li>
-      <li><strong>Refugio Cabanyal:</strong> +34 456 789 123 | refugio_cabanyal@outlook.com</li>
-    </ul>
-  </section>
-
-  <!-- Donation Chart Section -->
-  <div id="donation-section">
-    <h2>Donaciones Recibidas</h2>
-    <div id="transactions">
-      <table>
-        <thead>
-          <tr>
-            <th>Dirección del Depositante</th>
-            <th>Cantidad (BTC)</th>
-            <th>Hora de Transacción</th>
-          </tr>
-        </thead>
-        <tbody id="transaction-table-body">
-          <!-- Las transacciones se insertarán aquí -->
-        </tbody>
-      </table>
-    </div>
+    <!-- Gráfico de donaciones -->
     <div id="chart">
       <canvas id="btcChart" width="400" height="200"></canvas>
     </div>
-  </div>
-
-  <!-- Media Section -->
-  <section class="media">
-    <h2>Imágenes y Videos</h2>
-    <div class="gallery">
-      <img src="https://dana-donate.vercel.app/descarga (1).jfif" alt="Imagen de rescate">
-      <img src="https://dana-donate.vercel.app/descarga (2).jfif" alt="Centro de refugio">
-      <img src="https://dana-donate.vercel.app/descarga (3).jfif" alt="Centro de refugio">
-      <img src="https://dana-donate.vercel.app/descarga (4).jfif" alt="Rescatistas en acción">
-      <video src="https://dana-donate.vercel.app/video.mp4" controls></video>
-    </div>
   </section>
 
-  <!-- Contact Section -->
-  <section class="contact">
-    <h2>Contáctanos</h2>
-    <ul>
-      <li>Correo: <a href="mailto:info@dana-donate.vercel.app">info@dana-donate.vercel.app</a></li>
-      <li>Teléfono: +34 123 456 789</li>
-      <li>Redes Sociales: 
-        <a href="#">Facebook</a>, 
-        <a href="#">Instagram</a>, 
-        <a href="#">Twitter</a>
-      </li>
-    </ul>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2024 Apoyo para Valencia. Todos los derechos reservados.</p>
-  </footer>
-
+  <!-- Scripts para Chart.js y funcionalidad -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
     const transactions = [
@@ -204,47 +120,69 @@
       { address: 'bc1qghi...', amount: 0.15, timestamp: '2024-10-30 13:45' },
     ];
 
-    const transactionTableBody = document.getElementById('transaction-table-body');
-
+    // Actualizar la tabla de transacciones
     function updateTransactionTable() {
+      const transactionTableBody = document.getElementById('transaction-table-body');
       transactionTableBody.innerHTML = '';
-      const recentTransactions = transactions.slice(-5);
-      recentTransactions.forEach(transaction => {
+
+      transactions.forEach(transaction => {
         const row = document.createElement('tr');
-        row.innerHTML = `<td>${transaction.address}</td><td>${transaction.amount}</td><td>${transaction.timestamp}</td>`;
+        row.innerHTML = `
+          <td>${transaction.address}</td>
+          <td>${transaction.amount}</td>
+          <td>${transaction.timestamp}</td>
+        `;
         transactionTableBody.appendChild(row);
       });
     }
 
+    // Crear y actualizar gráfico
     function drawChart() {
       const chartLabels = transactions.map(t => t.timestamp);
       const chartData = transactions.map(t => t.amount);
       const ctx = document.getElementById('btcChart').getContext('2d');
 
+      // Destruir el gráfico anterior si existe
       if (window.btcChart) {
         window.btcChart.destroy();
       }
 
+      // Crear el nuevo gráfico
       window.btcChart = new Chart(ctx, {
-        type: 'bar',
+        type: 'line',
         data: {
           labels: chartLabels,
           datasets: [{
             label: 'Donaciones (BTC)',
             data: chartData,
-            backgroundColor: '#FFD700',
+            backgroundColor: 'rgba(255, 215, 0, 0.5)',
+            borderColor: '#FFD700',
+            borderWidth: 2,
+            tension: 0.2,
+            fill: true
           }]
         },
         options: {
           scales: {
             y: {
-              beginAtZero: true
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: 'Cantidad (BTC)'
+              }
+            },
+            x: {
+              title: {
+                display: true,
+                text: 'Hora de Transacción'
+              }
             }
           }
         }
       });
     }
 
+    // Llamar a las funciones al cargar la página
     updateTransactionTable();
     drawChart();
   </script>
