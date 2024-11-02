@@ -307,7 +307,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <script>
- const transactions = [
+const transactions = [
   { address: 'bc1qxyz...', amount: 0.1, timestamp: '2024-10-30 10:00' },
   { address: 'bc1qabc...', amount: 0.2, timestamp: '2024-10-30 11:30' },
   { address: 'bc1qdef...', amount: 0.05, timestamp: '2024-10-30 12:15' },
@@ -315,12 +315,11 @@
 ];
 
 const transactionTableBody = document.getElementById('transaction-table-body');
-const ctx = document.getElementById('btcChart').getContext('2d');
 
+// Función para actualizar la tabla con las últimas 5 transacciones
 function updateTransactionTable() {
-  transactionTableBody.innerHTML = '';
-  // Mostrar solo las últimas 5 transacciones
-  const recentTransactions = transactions.slice(-5);
+  transactionTableBody.innerHTML = ''; // Limpiar tabla
+  const recentTransactions = transactions.slice(-5); // Obtener las últimas 5 transacciones
   recentTransactions.forEach(transaction => {
     const row = document.createElement('tr');
     row.innerHTML = `<td>${transaction.address}</td><td>${transaction.amount}</td><td>${transaction.timestamp}</td>`;
@@ -328,10 +327,13 @@ function updateTransactionTable() {
   });
 }
 
+// Función para dibujar el gráfico
 function drawChart() {
   const chartLabels = transactions.map(t => t.timestamp);
   const chartData = transactions.map(t => t.amount);
+  const ctx = document.getElementById('btcChart').getContext('2d');
 
+  // Destruir el gráfico anterior si existe
   if (window.btcChart) {
     window.btcChart.destroy();
   }
@@ -367,8 +369,8 @@ function simulateNewTransactions() {
     timestamp: new Date().toLocaleString()
   };
   transactions.push(newTransaction);
-  updateTransactionTable();
-  drawChart();
+  updateTransactionTable(); // Actualizar la tabla
+  drawChart(); // Actualizar el gráfico
 }
 
 // Actualizar la tabla y el gráfico cada 5 segundos
@@ -376,8 +378,8 @@ setInterval(simulateNewTransactions, 5000);
 
 // Llamar a las funciones al cargar la página
 document.addEventListener('DOMContentLoaded', () => {
-  updateTransactionTable();
-  drawChart();
+  updateTransactionTable(); // Inicializar la tabla
+  drawChart(); // Inicializar el gráfico
 });
 
     </script>
