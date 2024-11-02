@@ -316,20 +316,25 @@
 
     const transactionTableBody = document.getElementById('transaction-table-body');
 
-    transactions.forEach(transaction => {
-      const row = document.createElement('tr');
-      row.innerHTML = `<td>${transaction.address}</td><td>${transaction.amount}</td><td>${transaction.timestamp}</td>`;
-      transactionTableBody.appendChild(row);
-    });
+    function updateTransactionTable() {
+      transactionTableBody.innerHTML = '';
+      transactions.forEach(transaction => {
+        const row = document.createElement('tr');
+        row.innerHTML = `<td>${transaction.address}</td><td>${transaction.amount}</td><td>${transaction.timestamp}</td>`;
+        transactionTableBody.appendChild(row);
+      });
+    }
 
-    // Datos para el gráfico
-    const chartLabels = transactions.map(t => t.timestamp);
-    const chartData = transactions.map(t => t.amount);
-
-    // Función para dibujar el gráfico
     function drawChart() {
       const ctx = document.getElementById('btcChart').getContext('2d');
-      const btcChart = new Chart(ctx, {
+      const chartLabels = transactions.map(t => t.timestamp);
+      const chartData = transactions.map(t => t.amount);
+
+      if (window.btcChart) {
+        window.btcChart.destroy();
+      }
+
+      window.btcChart = new Chart(ctx, {
         type: 'bar',
         data: {
           labels: chartLabels,
@@ -352,8 +357,26 @@
       });
     }
 
-    // Llamar a drawChart después de que el DOM esté completamente cargado
-    document.addEventListener('DOMContentLoaded', drawChart);
+    // Simular la llegada de nuevas transacciones
+    function simulateNewTransactions() {
+      const newTransaction = {
+        address: 'bc1qnewaddress...',
+        amount: (Math.random() * 0.3).toFixed(2), // Cantidad aleatoria entre 0 y 0.3 BTC
+        timestamp: new Date().toLocaleString()
+      };
+      transactions.push(newTransaction);
+      updateTransactionTable();
+      drawChart();
+    }
+
+    // Actualizar la tabla y el gráfico cada 5 segundos
+    setInterval(simulateNewTransactions, 5000);
+
+    // Llamar a las funciones al cargar la página
+    document.addEventListener('DOMContentLoaded', () => {
+      updateTransactionTable();
+      drawChart();
+    });
     </script>
 
 </body>
