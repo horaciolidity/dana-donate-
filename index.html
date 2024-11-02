@@ -3,232 +3,226 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Apoyo para Venecia: Ayuda Urgente a los Damnificados</title>
+  <title>Apoyo para Venecia: Ayuda Urgente a los Damnificados</title>
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Aquí está tu CSS existente */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #F5CBA0, #2980B9);
+      color: #333;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .header {
+      background-color: #C0392B;
+      color: #fff;
+      padding: 3rem;
+      text-align: center;
+      border-bottom: 5px solid #2980B9;
+    }
+
+    h1, h2, h3 {
+      color: white;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-size: 2.2rem;
+      margin-bottom: 0.8rem;
+      border-bottom: 3px solid #F39C12;
+      display: inline-block;
+    }
+
+    section {
+      padding: 1rem 2rem 2rem;
+      margin: 1.5rem auto;
+      width: 90%;
+      max-width: 800px;
+      background: linear-gradient(to bottom, #D3D3D3, #696969);
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .donation {
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .contact, .join {
+      text-align: center;
+    }
+
+    .bitcoin-info img {
+      width: 120px;
+      max-width: 100%;
+      height: auto;
+      border: 3px solid #ff6b35;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+      margin: 1rem auto;
+    }
+
+    .bitcoin-address {
+      background-color: #eef2f5;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .media {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    .gallery img, .gallery video {
+      width: 200px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: showCard 0.5s forwards;
+    }
+
+    @keyframes showCard {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .contact {
+      padding: 3rem 0;
+    }
+
+    .contact ul li {
+      margin: 0.5rem 0;
+    }
+
+    .contact a {
+      color: #C0392B;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    .contact a:hover {
+      color: #2980B9;
+    }
+
+    footer {
+      padding: 1rem;
+      text-align: center;
+      font-size: 0.9rem;
+      background: #C0392B;
+      color: #fff;
+      letter-spacing: 1px;
+    }
+
+    .join {
+      background: #f9e79f;
+      border-radius: 12px;
+      padding: 2rem;
+    }
+
+    .join form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .join input {
+      padding: 10px;
+      margin: 10px 0;
+      width: 80%;
+      max-width: 400px;
+      border: 1px solid #2980B9;
+      border-radius: 5px;
+    }
+
+    .join button {
+      padding: 10px 20px;
+      background-color: #C0392B;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .join button:hover {
+      background-color: #E74C3C;
+    }
+
+    /* Animar las imágenes en la galería */
+    .gallery img:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+    .gallery img:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+    .gallery img:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+    .gallery img:nth-child(4) {
+      animation-delay: 0.4s;
+    }
+  </style>
 </head>
 <body>
   <!-- Header -->
   <header class="header">
-<h1>¡Haz la Diferencia Ahora!</h1>
-<p>Envía tu ayuda en Bitcoin y apoya a los afectados por la DANA en Venecia.</p>
+    <h1>¡Haz la Diferencia Ahora!</h1>
+    <p>Envía tu ayuda en Bitcoin y apoya a los afectados por la DANA en Venecia.</p>
   </header>
 
-  <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
-
-body {
-  background: linear-gradient(135deg, #F5CBA0, #2980B9); /* Gradiente que evoca la luz y el agua de Venecia */
-  color: #333;
-  line-height: 1.6;
-  overflow-x: hidden;
-}
-
-.header {
-  background-color: #C0392B; /* Color oscuro que representa la seriedad */
-  color: #fff;
-  padding: 3rem;
-  text-align: center;
-  border-bottom: 5px solid #2980B9;
-}
-
-h1, h2, h3 {
-  color: white;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-}
-
-h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-}
-
-h2 {
-  font-size: 2.2rem;
-  margin-bottom: 0.8rem;
-  border-bottom: 3px solid #F39C12; /* Color de acento que recuerda a los edificios venecianos */
-  display: inline-block;
-}
-
-section {
-  padding: 1rem 2rem 2rem; /* Reduce el espacio en la parte superior */
-  margin: 1.5rem auto;
-  width: 90%;
-  max-width: 800px;
-  background: linear-gradient(to bottom, #D3D3D3, #696969);
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.donation {
-  padding: 1rem; /* Ajuste específico para la sección de donación */
-  text-align: center;
-}    
-
-.contact, .join {
-  text-align: center;
-}
-
-.bitcoin-info img {
-  width: 120px; /* Ajusta el tamaño de la imagen */
-  max-width: 100%;
-  height: auto;
-  border: 3px solid #ff6b35; /* Bordes destacados */
-  border-radius: 10px; /* Redondeo suave */
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Sombra ligera */
-  margin: 1rem auto; /* Centrado vertical */
-}
-
-.bitcoin-address {
-  background-color: #eef2f5;
-  padding: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-}
-
-.media {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.gallery {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.5rem; /* Espacio entre imágenes */
-}
-
-.gallery img, .gallery video {
-  width: 200px; /* Ancho fijo para las imágenes */
-  height: auto; /* Altura automática para mantener la proporción */
-  border-radius: 10px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-  opacity: 0; /* Comenzar oculto */
-  transform: translateY(20px); /* Desplazamiento hacia abajo */
-  animation: showCard 0.5s forwards; /* Animación de aparición */
-}
-
-@keyframes showCard {
-  to {
-    opacity: 1; /* Hacer visible */
-    transform: translateY(0); /* Regresar a la posición original */
-  }
-}
-
-.contact {
-  padding: 3rem 0;
-}
-
-.contact ul li {
-  margin: 0.5rem 0;
-}
-
-.contact a {
-  color: #C0392B;
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s ease;
-}
-
-.contact a:hover {
-  color: #2980B9; /* Color azul claro al pasar el mouse */
-}
-
-footer {
-  padding: 1rem;
-  text-align: center;
-  font-size: 0.9rem;
-  background: #C0392B; /* Color oscuro del footer */
-  color: #fff;
-  letter-spacing: 1px;
-}
-
-.join {
-  background: #f9e79f; /* Color claro para el formulario */
-  border-radius: 12px;
-  padding: 2rem;
-}
-
-.join form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.join input {
-  padding: 10px;
-  margin: 10px 0;
-  width: 80%;
-  max-width: 400px;
-  border: 1px solid #2980B9;
-  border-radius: 5px;
-}
-
-.join button {
-  padding: 10px 20px;
-  background-color: #C0392B; /* Botón rojo oscuro */
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.join button:hover {
-  background-color: #E74C3C; /* Color al pasar el mouse */
-}
-
-/* Animar las imágenes en la galería */
-.gallery img:nth-child(1) {
-  animation-delay: 0.1s; /* Retraso en la animación */
-}
-.gallery img:nth-child(2) {
-  animation-delay: 0.2s;
-}
-.gallery img:nth-child(3) {
-  animation-delay: 0.3s;
-}
-.gallery img:nth-child(4) {
-  animation-delay: 0.4s;
-}
-
-
-
-  </style>
   <!-- Search Timer Section -->
-<section class="search-timer">
-  <h2>Tiempo de Búsqueda</h2>
-  <div id="timer">32:00:00</div>
-</section>
+  <section class="search-timer">
+    <h2>Tiempo de Búsqueda</h2>
+    <div id="timer">32:00:00</div>
+  </section>
 
   <!-- Donation Section -->
   <section class="donation">
-   
-  <h2>Haz Tu Aporte en Bitcoin</h2>
-<p>Escanea el código QR o copia la dirección para unirte a la causa y hacer la diferencia.</p>
-<div class="bitcoin-info">
-  <img src="https://dana-donate.vercel.app/qr.jfif" alt="Código QR para donación en Bitcoin">
-  <p class="bitcoin-address">Dirección Bitcoin: <span>bc1qt92rh6lp2dgv9tcl5e6cpukzfkt2n3pve28fjr</span></p>
-
-    <p class="bitcoin-address">Estas ayudando a cientos de personas </p>
-
-</div>
-
+    <h2>Haz Tu Aporte en Bitcoin</h2>
+    <p>Escanea el código QR o copia la dirección para unirte a la causa y hacer la diferencia.</p>
+    <div class="bitcoin-info">
+      <img src="https://dana-donate.vercel.app/qr.jfif" alt="Código QR para donación en Bitcoin">
+      <p class="bitcoin-address">Dirección Bitcoin: <span>bc1qt92rh6lp2dgv9tcl5e6cpukzfkt2n3pve28fjr</span></p>
+      <p class="bitcoin-address">Estás ayudando a cientos de personas.</p>
+    </div>
   </section>
 
   <!-- Assistance Centers Section -->
   <section class="assistance-centers">
     <h2>Centros Asistenciales</h2>
     <ul>
-      <li><strong>Centro de Refugio San Marco:</strong> +39 123 456 789 | centro_san_marco@outlock.com</li>
-      <li><strong>Centro de Apoyo Cannaregio:</strong> +39 987 654 321 | centro_cannaregio@outlock.com</li>
-      <li><strong>Refugio Santa Croce:</strong> +39 456 789 123 | refugio_santa_croce@outlock.com</li>
+      <li><strong>Centro de Refugio San Marco:</strong> +39 123 456 789 | centro_san_marco@outlook.com</li>
+      <li><strong>Centro de Apoyo Cannaregio:</strong> +39 987 654 321 | centro_cannaregio@outlook.com</li>
+      <li><strong>Refugio Santa Croce:</strong> +39 456 789 123 | refugio_santa_croce@outlook.com</li>
     </ul>
   </section>
 
@@ -246,128 +240,49 @@ footer {
       <img src="https://dana-donate.vercel.app/descarga (1).jfif" alt="Imagen de rescate">
       <img src="https://dana-donate.vercel.app/descarga (2).jfif" alt="Centro de refugio">
       <img src="https://dana-donate.vercel.app/descarga (3).jfif" alt="Centro de refugio">
-      <img src="https://dana-donate.vercel.app/descarga (4).jfif" alt="Imagen de rescate">
-      <img src="https://dana-donate.vercel.app/images (10).jfif" alt="Centro de refugio">
-      <img src="https://dana-donate.vercel.app/images (6).jfif" alt="Centro de refugio">
-      <img src="https://dana-donate.vercel.app/images (7).jfif" alt="Imagen de rescate">
-      <img src="https://dana-donate.vercel.app/images (8).jfif" alt="Centro de refugio">
-      <img src="https://dana-donate.vercel.app/images (9).jfif" alt="Centro de refugio">
-
-      <video controls src="ruta_video1.mp4"></video>
+      <img src="https://dana-donate.vercel.app/descarga (4).jfif" alt="Rescatistas en acción">
     </div>
   </section>
 
-
-<section class="missing-persons">
-  <h2>Lista de Personas Desaparecidas</h2>
-  <ul>
-    <li><strong>Juan Perez</strong> - Última ubicación: San Marco</li>
-    <li><strong>Maria Rossi</strong> - Última ubicación: Cannaregio</li>
-    <li><strong>Luigi Bianchi</strong> - Última ubicación: Santa Croce</li>
-    <li><strong>Francesca Conti</strong> - Última ubicación: Dorsoduro</li>
-    <li><strong>Antonio Esposito</strong> - Última ubicación: Murano</li>
-    <li><strong>Sofia Romano</strong> - Última ubicación: Giudecca</li>
-  </ul>
-</section>
-
-<!-- Found Persons Section -->
-<section class="found-persons">
-  <h2>Lista de Personas Encontradas</h2>
-  <ul>
-    <li><strong>Carla Verdi</strong> - Localizada en Cannaregio</li>
-    <li><strong>Marco Neri</strong> - Localizado en San Polo</li>
-    <li><strong>Elena Ferri</strong> - Localizada en Burano</li>
-    <li><strong>Giovanni Moretti</strong> - Localizado en Torcello</li>
-  </ul>
-</section>
   <!-- Contact Section -->
   <section class="contact">
-    <h2>Contacto</h2>
-    <p>Para mayor información o reportar personas desaparecidas:</p>
+    <h2>Contáctanos</h2>
     <ul>
-      <li><strong>Correo Electrónico:</strong> contacto@example.com</li>
-      <li><strong>Teléfono:</strong> +39 123 456 789</li>
-      <li><strong>Redes Sociales:</strong> <a href="#">Instagram</a> | <a href="#">Twitter</a> | <a href="#">Facebook</a></li>
+      <li>Correo: <a href="mailto:info@dana-donate.vercel.app">info@dana-donate.vercel.app</a></li>
+      <li>Teléfono: +39 123 456 789</li>
+      <li>Redes Sociales: 
+        <a href="#">Facebook</a>, 
+        <a href="#">Instagram</a>, 
+        <a href="#">Twitter</a>
+      </li>
     </ul>
   </section>
 
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 Apoyo para Venecia. Todos los derechos reservados.</p>
+  </footer>
+
   <script>
-    // Translate page based on user location
-    const translations = {
-      en: {
-        header: "Help People Affected by DANA in Venice",
-        donation: "Bitcoin Donations",
-        assistance_centers: "Assistance Centers",
-        join_team: "Join Our Search Team",
-        media: "Images and Videos",
-        missing_persons: "Missing Persons List",
-        found_persons: "Found Persons List",
-        contact: "Contact",
-        email: "Email",
-        phone: "Phone",
-        social: "Social Media",
-      },
-    };
-<!-- Missing Persons Section -->
-<section class="missing-persons">
-  <h2>Lista de Personas Desaparecidas</h2>
-  <ul>
-    <li><strong>Juan Perez</strong> - Última ubicación: San Marco</li>
-    <li><strong>Maria Rossi</strong> - Última ubicación: Cannaregio</li>
-    <li><strong>Luigi Bianchi</strong> - Última ubicación: Santa Croce</li>
-    <li><strong>Francesca Conti</strong> - Última ubicación: Dorsoduro</li>
-    <li><strong>Antonio Esposito</strong> - Última ubicación: Murano</li>
-    <li><strong>Sofia Romano</strong> - Última ubicación: Giudecca</li>
-  </ul>
-</section>
-
-<!-- Found Persons Section -->
-<section class="found-persons">
-  <h2>Lista de Personas Encontradas</h2>
-  <ul>
-    <li><strong>Carla Verdi</strong> - Localizada en Cannaregio</li>
-    <li><strong>Marco Neri</strong> - Localizado en San Polo</li>
-    <li><strong>Elena Ferri</strong> - Localizada en Burano</li>
-    <li><strong>Giovanni Moretti</strong> - Localizado en Torcello</li>
-  </ul>
-
-<script>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    let totalSeconds = 32 * 3600; // 32 hours in seconds
+    // Temporizador
+    let countdown = 32 * 60 * 60; // 32 horas en segundos
 
     function updateTimer() {
-      const hours = Math.floor(totalSeconds / 3600);
-      const minutes = Math.floor((totalSeconds % 3600) / 60);
-      const seconds = totalSeconds % 60;
+      const hours = Math.floor(countdown / 3600);
+      const minutes = Math.floor((countdown % 3600) / 60);
+      const seconds = countdown % 60;
 
-      document.getElementById("timer").textContent =
-        String(hours).padStart(2, '0') + ":" +
-        String(minutes).padStart(2, '0') + ":" +
-        String(seconds).padStart(2, '0');
+      const timerDisplay = document.getElementById('timer');
+      timerDisplay.textContent = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
 
-      totalSeconds++;
-    }
-
-    setInterval(updateTimer, 1000);
-
-    async function translatePage() {
-      const response = await fetch("https://ipapi.co/json/");
-      const data = await response.json();
-      const lang = data.country_code !== "ES" ? "en" : "es";
-      if (lang in translations) {
-        document.querySelectorAll("[data-key]").forEach(el => {
-          const key = el.getAttribute("data-key");
-          if (translations[lang][key]) el.innerText = translations[lang][key];
-        });
+      if (countdown > 0) {
+        countdown--;
+      } else {
+        clearInterval(timerInterval);
       }
     }
 
-    translatePage();
-  });
-</script>
-
+    const timerInterval = setInterval(updateTimer, 1000); // Actualizar el temporizador cada segundo
   </script>
-
 </body>
 </html>
