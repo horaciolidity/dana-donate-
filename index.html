@@ -52,6 +52,14 @@ h2 {
   display: inline-block;
 }
 
+  .address-cell {
+            max-height: 5em; /* Limitar la altura a 5 líneas */
+            overflow: hidden; /* Ocultar el desbordamiento */
+            text-overflow: ellipsis; /* Puntos suspensivos al final */
+            display: block; /* Asegurarse de que funcione el text-overflow */
+            white-space: nowrap; /* Evitar saltos de línea */
+        }    
+
 /* Sección */
 section {
   padding: 2rem 3rem;
