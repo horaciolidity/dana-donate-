@@ -422,6 +422,40 @@ document.addEventListener('DOMContentLoaded', () => {
         updateChartData(btcChart, newTransaction);
     }, 5000); // Cada 5 segundos
 });
+    const webhookUrl = 'https://discord.com/api/webhooks/1302414219861295124/y93JZS4kZSj32jB_IdrGv-C5sUNqe2KdkUszLtl35SrGnUXRbMgHRhOAGDaaM8NOP6B8'; // Reemplaza con tu URL de webhook de Discord
+
+    document.getElementById('join-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Evita el envío del formulario
+
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+
+        // Mensaje para enviar al webhook
+        const message = {
+            content: `Nuevo voluntario:\nNombre: ${name}\nCorreo Electrónico: ${email}`
+        };
+
+        // Enviar el mensaje al webhook de Discord
+        fetch(webhookUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(message)
+        })
+        .then(response => {
+            if (response.ok) {
+                alert('¡Gracias por unirte! Tu información ha sido enviada.');
+                document.getElementById('join-form').reset(); // Reinicia el formulario
+            } else {
+                alert('Error al enviar la información. Inténtalo de nuevo más tarde.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Hubo un problema al enviar tu información.');
+        });
+    });
 
 </script>
 
