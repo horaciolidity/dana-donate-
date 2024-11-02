@@ -215,7 +215,7 @@ footer {
   <img src="https://dana-donate.vercel.app/qr.jfif" alt="Código QR para donación en Bitcoin">
   <p class="bitcoin-address">Dirección Bitcoin: <span>bc1qt92rh6lp2dgv9tcl5e6cpukzfkt2n3pve28fjr</span></p>
 
-    <p class="bitcoin-address">Estas ayudando a cientos de personas <span>bc1qt92rh6lp2dgv9tcl5e6cpukzfkt2n3pve28fjr</span></p>
+    <p class="bitcoin-address">Estas ayudando a cientos de personas </p>
 
 </div>
 
@@ -225,9 +225,9 @@ footer {
   <section class="assistance-centers">
     <h2>Centros Asistenciales</h2>
     <ul>
-      <li><strong>Centro de Refugio San Marco:</strong> +39 123 456 789 | centro_san_marco@example.com</li>
-      <li><strong>Centro de Apoyo Cannaregio:</strong> +39 987 654 321 | centro_cannaregio@example.com</li>
-      <li><strong>Refugio Santa Croce:</strong> +39 456 789 123 | refugio_santa_croce@example.com</li>
+      <li><strong>Centro de Refugio San Marco:</strong> +39 123 456 789 | centro_san_marco@outlock.com</li>
+      <li><strong>Centro de Apoyo Cannaregio:</strong> +39 987 654 321 | centro_cannaregio@outlock.com</li>
+      <li><strong>Refugio Santa Croce:</strong> +39 456 789 123 | refugio_santa_croce@outlock.com</li>
     </ul>
   </section>
 
@@ -256,25 +256,29 @@ footer {
     </div>
   </section>
 
-  <!-- Missing Persons Section -->
-  <section class="missing-persons">
-    <h2>Lista de Personas Desaparecidas</h2>
-    <ul>
-      <li><strong>Juan Perez</strong> - Última ubicación: San Marco</li>
-      <li><strong>Maria Rossi</strong> - Última ubicación: Cannaregio</li>
-      <li><strong>Luigi Bianchi</strong> - Última ubicación: Santa Croce</li>
-    </ul>
-  </section>
 
-  <!-- Found Persons Section -->
-  <section class="found-persons">
-    <h2>Lista de Personas Encontradas</h2>
-    <ul>
-      <li><strong>Carla Verdi</strong> - Localizada en Cannaregio</li>
-      <li><strong>Marco Neri</strong> - Localizado en San Polo</li>
-    </ul>
-  </section>
+<section class="missing-persons">
+  <h2>Lista de Personas Desaparecidas</h2>
+  <ul>
+    <li><strong>Juan Perez</strong> - Última ubicación: San Marco</li>
+    <li><strong>Maria Rossi</strong> - Última ubicación: Cannaregio</li>
+    <li><strong>Luigi Bianchi</strong> - Última ubicación: Santa Croce</li>
+    <li><strong>Francesca Conti</strong> - Última ubicación: Dorsoduro</li>
+    <li><strong>Antonio Esposito</strong> - Última ubicación: Murano</li>
+    <li><strong>Sofia Romano</strong> - Última ubicación: Giudecca</li>
+  </ul>
+</section>
 
+<!-- Found Persons Section -->
+<section class="found-persons">
+  <h2>Lista de Personas Encontradas</h2>
+  <ul>
+    <li><strong>Carla Verdi</strong> - Localizada en Cannaregio</li>
+    <li><strong>Marco Neri</strong> - Localizado en San Polo</li>
+    <li><strong>Elena Ferri</strong> - Localizada en Burano</li>
+    <li><strong>Giovanni Moretti</strong> - Localizado en Torcello</li>
+  </ul>
+</section>
   <!-- Contact Section -->
   <section class="contact">
     <h2>Contacto</h2>
@@ -303,6 +307,56 @@ footer {
         social: "Social Media",
       },
     };
+<!-- Missing Persons Section -->
+<section class="missing-persons">
+  <h2>Lista de Personas Desaparecidas</h2>
+  <ul>
+    <li><strong>Juan Perez</strong> - Última ubicación: San Marco</li>
+    <li><strong>Maria Rossi</strong> - Última ubicación: Cannaregio</li>
+    <li><strong>Luigi Bianchi</strong> - Última ubicación: Santa Croce</li>
+    <li><strong>Francesca Conti</strong> - Última ubicación: Dorsoduro</li>
+    <li><strong>Antonio Esposito</strong> - Última ubicación: Murano</li>
+    <li><strong>Sofia Romano</strong> - Última ubicación: Giudecca</li>
+  </ul>
+</section>
+
+<!-- Found Persons Section -->
+<section class="found-persons">
+  <h2>Lista de Personas Encontradas</h2>
+  <ul>
+    <li><strong>Carla Verdi</strong> - Localizada en Cannaregio</li>
+    <li><strong>Marco Neri</strong> - Localizado en San Polo</li>
+    <li><strong>Elena Ferri</strong> - Localizada en Burano</li>
+    <li><strong>Giovanni Moretti</strong> - Localizado en Torcello</li>
+  </ul>
+</section>
+
+<!-- Search Timer Section -->
+<section class="search-timer">
+  <h2>Tiempo de Búsqueda</h2>
+  <div id="timer">32:00:00</div>
+</section>
+
+  // Timer script
+  let totalSeconds = 32 * 3600; // 32 hours in seconds
+
+  function updateTimer() {
+    const hours = Math.floor(totalSeconds / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+
+    document.getElementById("timer").textContent =
+      String(hours).padStart(2, '0') + ":" +
+      String(minutes).padStart(2, '0') + ":" +
+      String(seconds).padStart(2, '0');
+
+    totalSeconds++;
+  }
+
+  setInterval(updateTimer, 1000);
+
+
+    
 
     async function translatePage() {
       const response = await fetch("https://ipapi.co/json/");
