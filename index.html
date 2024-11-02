@@ -77,6 +77,9 @@ section {
 
 /* Información Bitcoin */
 .bitcoin-info img {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 150px;
   max-width: 100%;
   height: auto;
@@ -321,53 +324,89 @@ footer {
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
-    const transactions = [
-      { address: 'bc1qxyz...', amount: 0.1, timestamp: '2024-10-30 10:00' },
-      { address: 'bc1qabc...', amount: 0.2, timestamp: '2024-10-30 11:30' },
-      { address: 'bc1qdef...', amount: 0.05, timestamp: '2024-10-30 12:15' },
-      { address: 'bc1qghi...', amount: 0.15, timestamp: '2024-10-30 13:45' },
-    ];
+   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const transactions = [
+    { address: 'bc1qxyz...', amount: 0.1, timestamp: '2024-10-30 10:00' },
+    { address: 'bc1qabc...', amount: 0.2, timestamp: '2024-10-30 11:30' },
+    { address: 'bc1qdef...', amount: 0.05, timestamp: '2024-10-30 12:15' },
+    { address: 'bc1qghi...', amount: 0.15, timestamp: '2024-10-30 13:45' },
+  ];
 
-    const transactionTableBody = document.getElementById('transaction-table-body');
+  const transactionTableBody = document.getElementById('transaction-table-body');
 
-    transactions.forEach(transaction => {
-      const row = document.createElement('tr');
-      row.innerHTML = `<td>${transaction.address}</td><td>${transaction.amount}</td><td>${transaction.timestamp}</td>`;
-      transactionTableBody.appendChild(row);
-    });
+  // Mostrar transacciones iniciales en la tabla
+  transactions.forEach(transaction => {
+    const row = document.createElement('tr');
+    row.innerHTML = `<td>${transaction.address}</td><td>${transaction.amount}</td><td>${transaction.timestamp}</td>`;
+    transactionTableBody.appendChild(row);
+  });
 
-    // Datos para el gráfico
-    const chartLabels = transactions.map(t => t.timestamp);
-    const chartData = transactions.map(t => t.amount);
+  // Datos para el gráfico
+  const chartLabels = transactions.map(t => t.timestamp);
+  const chartData = transactions.map(t => t.amount);
 
-    // Función para dibujar el gráfico
-    function drawChart() {
-      const ctx = document.getElementById('btcChart').getContext('2d');
-      const btcChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-          labels: chartLabels,
-          datasets: [{
-            label: 'Cantidad donada (BTC)',
-            data: chartData,
-            backgroundColor: 'rgba(52, 152, 219, 0.5)',
-            borderColor: 'rgba(52, 152, 219, 1)',
-            borderWidth: 1,
-          }]
-        },
-        options: {
-          responsive: true,
-          scales: {
-            y: {
-              beginAtZero: true
-            }
+  // Función para dibujar el gráfico
+  function drawChart() {
+    const ctx = document.getElementById('btcChart').getContext('2d');
+    const btcChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: chartLabels,
+        datasets: [{
+          label: 'Cantidad donada (BTC)',
+          data: chartData,
+          backgroundColor: 'rgba(52, 152, 219, 0.5)',
+          borderColor: 'rgba(52, 152, 219, 1)',
+          borderWidth: 1,
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true
           }
         }
-      });
-    }
+      }
+    });
+    return btcChart;
+  }
 
-    // Llamar a drawChart después de que el DOM esté completamente cargado
-    document.addEventListener('DOMContentLoaded', drawChart);
+  // Función para generar una nueva transacción aleatoria
+  function generateRandomTransaction() {
+    const address = 'bc1q' + Math.random().toString(36).substring(2, 15);
+    const amount = (Math.random() * (0.2 - 0.01) + 0.01).toFixed(4);
+    const timestamp = new Date().toLocaleString();
+    return { address, amount, timestamp };
+  }
+
+  // Función para agregar una transacción a la tabla
+  function addTransactionToTable(transaction) {
+    const row = document.createElement('tr');
+    row.innerHTML = `<td>${transaction.address}</td><td>${transaction.amount}</td><td>${transaction.timestamp}</td>`;
+    transactionTableBody.appendChild(row);
+  }
+
+  // Función para actualizar los datos del gráfico
+  function updateChartData(chart, transaction) {
+    chart.data.labels.push(transaction.timestamp);
+    chart.data.datasets[0].data.push(parseFloat(transaction.amount));
+    chart.update();
+  }
+
+  // Inicializar el gráfico y agregar simulación de transacciones
+  document.addEventListener('DOMContentLoaded', () => {
+    const btcChart = drawChart();
+
+    setInterval(() => {
+      const newTransaction = generateRandomTransaction();
+      addTransactionToTable(newTransaction);
+      updateChartData(btcChart, newTransaction);
+    }, 5000); // Cada 5 segundos
+  });
+</script>
+
   </script>
 </body>
 </html>
