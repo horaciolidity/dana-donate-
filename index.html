@@ -467,10 +467,9 @@ const items = [
     { type: "image", src: "https://dana-donate.vercel.app/images (10).jfif" },
     { type: "image", src: "https://dana-donate.vercel.app/images (6).jfif" },
     { type: "image", src: "https://dana-donate.vercel.app/images (7).jfif" },
-    { type: "image", src: "https://dana-donate.vercel.app/images (9).jfif"},
+    { type: "image", src: "https://dana-donate.vercel.app/images (9).jfif" },
     { type: "image", src: "https://dana-donate.vercel.app/images (8).jfif" },
     { type: "image", src: "https://dana-donate.vercel.app/images (6).jfif" },
-
     { type: "video", src: "https://dana-donate.vercel.app/vd.mp4" }
 ];
 
@@ -495,15 +494,17 @@ function updateCarousel() {
             video.controls = true;
             video.muted = true;
             video.loop = true;
+            video.autoplay = true; // Iniciar automáticamente
             slot.appendChild(video);
+            video.play(); // Asegúrate de que el video comience a reproducirse
         }
     }
-    currentIndex = (currentIndex + 1) % items.length;
+
+    currentIndex = (currentIndex + 1) % (items.length); // Aumentar el índice para el siguiente ciclo
 }
 
 // Actualiza las imágenes cada 2 segundos
 setInterval(updateCarousel, 2000);
-
 
 
 
