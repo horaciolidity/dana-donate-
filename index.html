@@ -252,44 +252,28 @@ footer {
 
 
 .carousel {
-    width: 100%; /* Ajusta el ancho del carrusel */
+    display: flex;
+    width: 80%;
+    max-width: 1000px;
+    justify-content: space-between;
+    align-items: center;
     overflow: hidden;
-    position: relative;
-    height: 350px; /* Altura del carrusel */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    gap: 10px;
 }
 
-.carousel-container {
-    display: flex;
+.carousel-slot {
+    width: 18%; /* Cada contenedor ocupa el 18% del ancho */
     transition: transform 0.5s ease;
-    gap: 20px; /* Espacio entre cada diapositiva */
-}
-
-.slide {
-    min-width: 200px; /* Ajusta el tamaño de cada diapositiva */
-    max-width: 200px;
-    transition: transform 0.5s, opacity 0.5s;
-    opacity: 0.5;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.slide img, .slide video {
+.carousel-slot img,
+.carousel-slot video {
     width: 100%;
     height: auto;
     border-radius: 10px;
-}
-
-.slide.center {
-    transform: scale(1.2); /* Agranda la diapositiva centrada */
-    opacity: 1;
-}
-
-.carousel-container:hover .slide:not(.center) {
-    opacity: 0.3;
 }
   </style>
 </head>
@@ -367,20 +351,13 @@ footer {
       <li><a href="#">Facebook</a> | <a href="#">Twitter</a> | <a href="#">Instagram</a></li>
     </ul>
   </section>
-  <div class="carousel">
-    <div class="carousel-container">
-        <!-- Aquí agregar las imágenes y videos -->
-        <div class="slide"><img src="https://dana-donate.vercel.app/descarga (1).jfif" alt="Imagen 1"></div>
-        <div class="slide"><img src="https://dana-donate.vercel.app/descarga (2).jfif" alt="Imagen 2"></div>
-        <div class="slide"><img src="https://dana-donate.vercel.app/descarga (3).jfif" alt="Imagen 3"></div>
-        <div class="slide"><img src="https://dana-donate.vercel.app/descarga (4).jfif" alt="Imagen 4"></div>
-        <div class="slide"><img src="https://dana-donate.vercel.app/images (10).jfif" alt="Imagen 5"></div>
-        <div class="slide"><img src="https://dana-donate.vercel.app/images (6).jfif" alt="Imagen 6"></div>
-        <div class="slide"><img src="https://dana-donate.vercel.app/images (7).jfif" alt="Imagen 7"></div>
-        <div class="slide"><img src="https://dana-donate.vercel.app/images (8).jfif" alt="Imagen 8"></div>
-        <div class="slide"><video src="https://dana-donate.vercel.app/vd.mp4" autoplay loop muted></video></div>
+ <div class="carousel">
+        <div class="carousel-slot" id="slot1"><img src="https://dana-donate.vercel.app/image1.jpg" alt="Imagen 1"></div>
+        <div class="carousel-slot" id="slot2"><img src="https://dana-donate.vercel.app/image2.jpg" alt="Imagen 2"></div>
+        <div class="carousel-slot" id="slot3"><img src="https://dana-donate.vercel.app/image3.jpg" alt="Imagen 3"></div>
+        <div class="carousel-slot" id="slot4"><img src="https://dana-donate.vercel.app/image4.jpg" alt="Imagen 4"></div>
+        <div class="carousel-slot" id="slot5"><img src="https://dana-donate.vercel.app/image5.jpg" alt="Imagen 5"></div>
     </div>
-</div>
 
 
   <!-- Footer -->
@@ -479,26 +456,50 @@ document.addEventListener('DOMContentLoaded', () => {
         updateChartData(btcChart, newTransaction);
     }, 5000); // Cada 5 segundos
 });
-const carouselContainer = document.querySelector('.carousel-container');
+const items = [
+    { type: "image", src: "https://dana-donate.vercel.app/image1.jpg" },
+    { type: "image", src: "https://dana-donate.vercel.app/image2.jpg" },
+    { type: "image", src: "https://dana-donate.vercel.app/image3.jpg" },
+    { type: "image", src: "https://dana-donate.vercel.app/image4.jpg" },
+    { type: "image", src: "https://dana-donate.vercel.app/image5.jpg" },
+    { type: "image", src: "https://dana-donate.vercel.app/image6.jpg" },
+    { type: "image", src: "https://dana-donate.vercel.app/image7.jpg" },
+    { type: "image", src: "https://dana-donate.vercel.app/image8.jpg" },
+    { type: "image", src: "https://dana-donate.vercel.app/image9.jpg" },
+    { type: "image", src: "https://dana-donate.vercel.app/image10.jpg" },
+    { type: "video", src: "https://dana-donate.vercel.app/video.mp4" }
+];
+
 let currentIndex = 0;
+const totalSlots = 5;
 
 function updateCarousel() {
-    const slides = document.querySelectorAll('.slide');
-    slides.forEach((slide, index) => {
-        slide.classList.remove('center');
-        if (index === currentIndex) {
-            slide.classList.add('center');
+    for (let i = 0; i < totalSlots; i++) {
+        const slot = document.getElementById(`slot${i + 1}`);
+        const item = items[(currentIndex + i) % items.length];
+        
+        // Limpiar contenido anterior del slot
+        slot.innerHTML = "";
+
+        if (item.type === "image") {
+            const img = document.createElement("img");
+            img.src = item.src;
+            slot.appendChild(img);
+        } else if (item.type === "video") {
+            const video = document.createElement("video");
+            video.src = item.src;
+            video.controls = true;
+            video.muted = true;
+            video.loop = true;
+            slot.appendChild(video);
         }
-    });
-    carouselContainer.style.transform = `translateX(-${currentIndex * 20}%)`;
+    }
+    currentIndex = (currentIndex + 1) % items.length;
 }
 
-function nextSlide() {
-    currentIndex = (currentIndex + 1) % document.querySelectorAll('.slide').length;
-    updateCarousel();
-}
+// Actualiza las imágenes cada 2 segundos
+setInterval(updateCarousel, 2000);
 
-setInterval(nextSlide, 3000); // Cambia cada 3 segundos
 
 
 
