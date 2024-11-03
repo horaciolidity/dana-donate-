@@ -389,9 +389,8 @@ footer {
     <div class="bitcoin-info">
       <img src="https://dana-donate.vercel.app/qr.jfif" alt="Código QR para donación en Bitcoin">
 <p class="bitcoin-address">
-    Dirección Bitcoin: <span id="btc-address">bc1qt92rh6lp2dgv9tcl5e6cpukzfkt2n3pve28fjr</span>
+    Dirección Bitcoin: <span id="btc-address">bc1qt92rh6...28fjr</span>
     <button class="copy-button" onclick="copyAddress()">Copiar</button>
-      <p class="bitcoin-address">Estás ayudando a cientos de personas.</p>
     </div>
   </section>
 
@@ -597,16 +596,15 @@ function updateCarousel() {
 // Actualiza las imágenes cada 2 segundos
 setInterval(updateCarousel, 2000);
 
-function copyAddress() {
-        const address = document.getElementById("btc-address").innerText;
-        navigator.clipboard.writeText(address).then(() => {
-            alert("Dirección copiada: " + address);
+ const fullAddress = "bc1qt92rh6lp2dgv9tcl5e6cpukzfkt2n3pve28fjr"; // Dirección completa
+
+    function copyAddress() {
+        navigator.clipboard.writeText(fullAddress).then(() => {
+            alert("Dirección copiada: " + fullAddress);
         }).catch(err => {
             console.error("Error al copiar: ", err);
         });
     }
-
-
 
 
 
