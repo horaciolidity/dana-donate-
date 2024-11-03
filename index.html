@@ -9,24 +9,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Título del sitio -->
-    <title>Donaciones para ayudar a las víctimas de la DANA en Venecia</title>
+    <title>Donaciones para ayudar a las víctimas de la DANA en Valencia</title>
     
     <!-- Descripción para SEO -->
-    <meta name="description" content="Realiza donaciones en Bitcoin para ayudar a las personas afectadas por la DANA en Venecia. Juntos podemos hacer la diferencia.">
+    <meta name="description" content="Realiza donaciones en Bitcoin para ayudar a las personas afectadas por la DANA en Valencia. Juntos podemos hacer la diferencia.">
 
     <!-- Palabras clave para SEO -->
-    <meta name="keywords" content="donaciones, DANA, Venecia, ayuda, Bitcoin, refugios, víctimas, emergencia, solidaridad, apoyo social">
+    <meta name="keywords" content="donaciones, DANA, Valencia, ayuda, Bitcoin, refugios, víctimas, emergencia, solidaridad, apoyo social">
 
     <!-- Etiquetas Open Graph para Facebook -->
-    <meta property="og:title" content="Donaciones para ayudar a las víctimas de la DANA en Venecia">
-    <meta property="og:description" content="Realiza donaciones en Bitcoin para ayudar a las personas afectadas por la DANA en Venecia. Juntos podemos hacer la diferencia.">
+    <meta property="og:title" content="Donaciones para ayudar a las víctimas de la DANA en Valencia">
+    <meta property="og:description" content="Realiza donaciones en Bitcoin para ayudar a las personas afectadas por la DANA en Valencia. Juntos podemos hacer la diferencia.">
     <meta property="og:image" content="https://dana-donate.vercel.app/descarga (3).jfif">
     <meta property="og:url" content="https://dana-donate.vercel.app/">
     <meta property="og:type" content="website">
 
     <!-- Etiquetas Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Donaciones para ayudar a las víctimas de la DANA en Venecia">
+    <meta name="twitter:title" content="Donaciones para ayudar a las víctimas de la DANA en Valencia">
     <meta name="twitter:description" content="Realiza donaciones en Bitcoin para ayudar a las personas afectadas por la DANA en Venecia. Juntos podemos hacer la diferencia.">
     <meta name="twitter:image" content="https://dana-donate.vercel.app/descarga (3).jfif">
 
@@ -128,12 +128,22 @@ section {
   margin: 1.5rem auto;
 }
 
-.bitcoin-address {
-  background-color: #FFEB3B;
-  padding: 1.2rem;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-}
+ .bitcoin-address {
+            font-size: 18px;
+            margin: 20px 0;
+        }
+        .copy-button {
+            margin-left: 10px;
+            padding: 5px 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .copy-button:hover {
+            background-color: #45a049;
+        }
 
 /* Galería */
 .gallery {
@@ -378,7 +388,9 @@ footer {
     <p>Escanea el código QR o copia la dirección para unirte a la causa y hacer la diferencia.</p>
     <div class="bitcoin-info">
       <img src="https://dana-donate.vercel.app/qr.jfif" alt="Código QR para donación en Bitcoin">
-      <p class="bitcoin-address">Dirección Bitcoin: <span>bc1qt92rh6lp2dgv9tcl5e6cpukzfkt2n3pve28fjr</span></p>
+<p class="bitcoin-address">
+    Dirección Bitcoin: <span id="btc-address">bc1qt92rh6lp2dgv9tcl5e6cpukzfkt2n3pve28fjr</span>
+    <button class="copy-button" onclick="copyAddress()">Copiar</button>
       <p class="bitcoin-address">Estás ayudando a cientos de personas.</p>
     </div>
   </section>
@@ -585,7 +597,14 @@ function updateCarousel() {
 // Actualiza las imágenes cada 2 segundos
 setInterval(updateCarousel, 2000);
 
-
+function copyAddress() {
+        const address = document.getElementById("btc-address").innerText;
+        navigator.clipboard.writeText(address).then(() => {
+            alert("Dirección copiada: " + address);
+        }).catch(err => {
+            console.error("Error al copiar: ", err);
+        });
+    }
 
 
 
